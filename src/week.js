@@ -1,7 +1,8 @@
-import { loadProjectContainer } from "./projectContainer.js";
+import { loadContent } from "./loadContent.js";
 
 function load() {
-    const projectContainer = loadProjectContainer("Week");
+    const svgPath = "assets/calendar-week-outline.svg";
+    const projectContainer = loadContent("Week", svgPath);
     const content = document.querySelector("#content");
     content.appendChild(projectContainer);
 }

@@ -36,3 +36,20 @@ thisMonthButton.addEventListener("click", (e) => {
     loadMonth();
     setActiveTab(button); // set the tab of the clicked button to active
 });
+
+const addProjectButton = document.querySelector("#add-project");
+addProjectButton.addEventListener("click", () => {
+    const addProjectModal = document.querySelector("#add-project-modal");
+    addProjectModal.showModal();
+});
+
+const addProjectModal = document.querySelector("#add-project-modal");
+const modalBg = document.querySelector(".modal-bg");
+modalBg.addEventListener('click', (event) => {
+    if (event.target.id === 'add-project-modal') {
+        addProjectModal.close();
+    }
+});
+
+loadToday();
+setActiveTab(document.querySelector("#go-to-today"));
