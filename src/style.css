@@ -1,6 +1,9 @@
 :root {
     --header-height: 45px;
     --sidebar-width: 280px;
+    --sidebar-bg: #eeeeee;
+    --sidebar-hover-bg: #f5f5f5;
+    --content-bg: #ffffff;
 }
 
 * {
@@ -29,7 +32,7 @@ body {
 
 #header {
     background: linear-gradient(45deg, rgb(208, 57, 3), rgb(78, 21, 0));
-    grid-column: 1 / 3;
+    grid-column: 2 / 3;
     grid-row: 1 / 2;
     padding-left: 50px; 
     display: flex;
@@ -37,23 +40,23 @@ body {
 }
 
 #go-to-home {
-    color: white;
     font-size: 2rem;
     font-weight: 900;
 }
 
 #sidebar {
-    background: rgb(246, 246, 246);
+    background-color: var(--sidebar-bg);
     grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    padding: 50px;
+    grid-row: 1 / 3;
+    padding: 50px 0px 50px 15px;
     display: grid;
-    grid-template-rows: 200px 1fr;
+    grid-template-rows: 80px 230px 1fr;
+    clip-path: inset(0px -15px 0px 0px);
 }
 
 #content {
-    background-color: rgb(72, 72, 72);
-    grid-row: 2 / 3;
+    background-color: var(--content-bg);
+    grid-row: 1 / 3;
     grid-column: 2 / 3;
 }
 
@@ -61,5 +64,58 @@ body {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+}
+
+#sidebar > ul > li {
+    width: 100%;
+    line-height: 40px;
+    padding-left: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#sidebar > ul > li > button {
+    height: 100%;
+    width: 100%;
+    text-align: start;
+}
+
+#sidebar li:hover:not(.active-tab) {
+    background-color: var(--sidebar-hover-bg);
+}
+
+li.active-tab {
+    background-color: var(--content-bg);
+}
+
+#sidebar button > img {
+    height: 15px;
+}
+
+.project-container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 150px 1fr;
+}
+
+#add-project > #add-project-plus{
+    height: 30px;
+}
+
+#add-project-plus:hover {
+    border-radius: 50%;
+    background-color: var(--content-bg);
+}
+
+#add-project-flex {
+    padding-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-container > div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,9 +1,10 @@
-function load() {
-    const content = document.querySelector("#content");
+import { loadProjectContainer } from "./projectContainer.js";
 
-    const dummy = document.createElement("p");
-    dummy.textContent = "dummy"; 
-    content.appendChild(dummy);
+function load() {
+    const svgPath = "../assets/calendar-today-outline.svg";
+    const projectContainer = loadProjectContainer("Today", svgPath);
+    const content = document.querySelector("#content");
+    content.appendChild(projectContainer);
 }
 
 export const loadToday = load; 

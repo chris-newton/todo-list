@@ -1,8 +1,9 @@
+import { loadProjectContainer } from "./projectContainer.js";
+
 function load() {
+    const projectContainer = loadProjectContainer("Week");
     const content = document.querySelector("#content");
-    const dummy = document.createElement("p");
-    dummy.textContent = "this week";
-    content.appendChild(dummy);
+    content.appendChild(projectContainer);
 }
 
 export const loadWeek = load; 

@@ -10,20 +10,41 @@
     </head>
     
     <body>
-        <div id="header">
-            <h1><button id="go-to-home">TODOLO</button></h1>
-        </div>
-
         <div id="sidebar">
+            <h1><button id="go-to-home">TODOLO</button></h1>
             <ul>
-                <li><button id="go-to-today">Today</button></li>
-                <li><button id="go-to-week">This week</button></li>
-                <li><button id="go-to-month">This Month</button></li>
-                <li><button id="go-to-all">All</button></li>
+                <li>
+                    <button id="go-to-today">
+                        <img src="../assets/calendar-today-outline.svg">
+                        Today
+                    </button></li>
+                <li>
+                    <button id="go-to-week">
+                        <img src="../assets/calendar-week-outline.svg">
+                        This week
+                    </button></li>
+                <li>
+                    <button id="go-to-month">
+                        <img src="../assets/calendar-month-outline.svg">
+                        This Month
+                    </button></li>
+                <li>
+                    <button id="go-to-all">
+                        <img src="../assets/calendar-blank-multiple.svg">
+                        All
+                    </button></li>
+                <li>
+                    <button id="go-to-completed">
+                        <img src="../assets/calendar-check-outline.svg">
+                        Completed
+                    </button></li>
             </ul>
             
             <ul>
-                <lh><button id="add-project">Add a Project</button></lh>
+                <lh id="add-project-flex">My Projects 
+                    <button id="add-project">
+                        <img id="add-project-plus" src="../assets/plus.svg">
+                    </button></lh>
             </ul>
         </div>
 
