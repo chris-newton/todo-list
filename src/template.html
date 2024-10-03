@@ -55,10 +55,14 @@
         <div class="modal-bg">
             <dialog id="add-project-modal">
                 <form>
-                    <label for="project-name">Create Project</label>
-                    <input id="project-name-input" type="text" name="project-name" placeholder="Enter a name for your project">
-            
-                    <input id="project-form-submit" type="submit"></form>
+                    <div id="project-modal-row1">
+                        <label for="project-name">Create Project</label>
+                        <button id="close-project-modal"><img src="../assets/close.svg"></button>
+                    </div>
+                    <div id="project-modal-row2">
+                        <input id="project-name-input" type="text" name="project-name" placeholder="Enter a name for your project"> <input id="project-form-submit" type="submit"></form>
+                        <button type="submit"></button>
+                    </div>
                 </form>
             </dialog>
         </div>

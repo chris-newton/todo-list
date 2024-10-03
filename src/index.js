@@ -41,6 +41,9 @@ const addProjectButton = document.querySelector("#add-project");
 addProjectButton.addEventListener("click", () => {
     const addProjectModal = document.querySelector("#add-project-modal");
     addProjectModal.showModal();
+
+    const closeButton = document.querySelector("#close-project-modal");
+    closeButton.addEventListener("click", () => addProjectModal.close());
 });
 
 const addProjectModal = document.querySelector("#add-project-modal");
