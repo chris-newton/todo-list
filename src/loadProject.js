@@ -1,19 +1,18 @@
-// loads an empty project container of standard layout
-function loadContainer(projectName, svgPath) {
+function loadHeader(project) {
     const projectHeader = document.createElement("div");
     projectHeader.id = "project-header";
-
     const nameIcon = document.createElement("img");
-    nameIcon.src = svgPath;
+    nameIcon.src = project.iconPath;
     const name = document.createElement("h2");
-    name.textContent = projectName;
-
+    name.textContent = project.name;
     projectHeader.append(nameIcon, name);
 
-    const contentContainer = document.createElement("div");
-    contentContainer.id = "content-container";
-    const projectBody = document.createElement("div");
-    projectBody.id = "project-body";
+    return projectHeader;
+}
+
+function loadBody(project) {
+    const projectContent = document.createElement("div");
+    project.id = "project-content";
     
     const addItemButton = document.createElement("button");
     addItemButton.id = "add-item-button";
@@ -28,14 +27,24 @@ function loadContainer(projectName, svgPath) {
     dummyTask2.textContent = "dummy task 2        description          due date";
     taskGrid.append(dummyTask1, dummyTask2);
     
-    const projectContainer = document.createElement("div");
-    projectContainer.id = "project-container";
+    projectContent.append(addItemButton, taskGrid);
     
-    projectContainer.append(addItemButton, taskGrid);
-    projectBody.append(projectContainer);
-    contentContainer.append(projectHeader, projectBody);
+    const projectBody = document.createElement("div");
+    projectBody.id = "project-body";
+    projectBody.append(projectContent);
+
+    return projectBody;
+}
+
+// loads an empty project container of standard layout
+function load(project) {
+    const header = loadHeader(project);
+    const body = loadBody(project);
+    const contentContainer = document.createElement("div");
+    contentContainer.id = "content-container";
+    contentContainer.append(header, body);
     
     return contentContainer;
 }
 
-export const loadContent = loadContainer;
+export const loadProject = load;

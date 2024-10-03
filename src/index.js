@@ -1,58 +1,46 @@
 import './style.css';
-import { loadToday } from './today.js';
-import { loadWeek } from './week.js';
-import { loadMonth } from './month.js';
-import { wipeContent } from './wipe.js';
+import Project from './project.js';
+import { loadProject } from './loadProject.js';
 import { setActiveTab } from './util.js';
+import { loadProjectModal } from './projectModal.js';
 
+const content = document.querySelector("#content");
 const homeButton = document.querySelector("#go-to-home");
+const todayButton = document.querySelector("#go-to-today");
 homeButton.addEventListener("click", (e) => {
-    wipeContent();
-    loadToday();
-    const button = document.querySelector("#go-to-today");
-    setActiveTab(button); // set the tab of the clicked button to active
+    content.replaceChildren();      // TODO: replace with existing object when implemented
+    const svgPath = '../assets/calendar-today-outline.svg';
+    const contentContainer = loadProject(new Project("Today", svgPath));
+    content.appendChild(contentContainer); 
+    setActiveTab(todayButton); // set the sidebar tab to active
 });
 
-const todayButton = document.querySelector("#go-to-today");
 todayButton.addEventListener("click", (e) => {
-    wipeContent();
-    loadToday();
-    const button = e.target;
-    setActiveTab(button); // set the tab of the clicked button to active
+    content.replaceChildren();
+    const svgPath = '../assets/calendar-today-outline.svg';
+    const contentContainer = loadProject(new Project("Today", svgPath));
+    content.appendChild(contentContainer); 
+    setActiveTab(todayButton); // set the sidebar tab to active
 });
 
 const thisWeekButton = document.querySelector("#go-to-week");
 thisWeekButton.addEventListener("click", (e) => {
-    const button = e.target;
-    wipeContent();
-    loadWeek();
-    setActiveTab(button); // set the tab of the clicked button to active
+    content.replaceChildren();
+    const svgPath = '../assets/calendar-week-outline.svg';
+    const contentContainer = loadProject(new Project("Week", svgPath));
+    content.appendChild(contentContainer); 
+    setActiveTab(thisWeekButton);
 });
 
 const thisMonthButton = document.querySelector("#go-to-month");
 thisMonthButton.addEventListener("click", (e) => {
-    const button = e.target;
-    wipeContent();
-    loadMonth();
-    setActiveTab(button); // set the tab of the clicked button to active
+    content.replaceChildren();
+    const svgPath = '../assets/calendar-month-outline.svg';
+    const contentContainer = loadProject(new Project("Month", svgPath));
+    content.appendChild(contentContainer); 
+    setActiveTab(thisMonthButton); 
 });
 
-const addProjectButton = document.querySelector("#add-project");
-addProjectButton.addEventListener("click", () => {
-    const addProjectModal = document.querySelector("#add-project-modal");
-    addProjectModal.showModal();
-
-    const closeButton = document.querySelector("#close-project-modal");
-    closeButton.addEventListener("click", () => addProjectModal.close());
-});
-
-const addProjectModal = document.querySelector("#add-project-modal");
-const modalBg = document.querySelector(".modal-bg");
-modalBg.addEventListener('click', (event) => {
-    if (event.target.id === 'add-project-modal') {
-        addProjectModal.close();
-    }
-});
-
-loadToday();
+loadProjectModal();
+loadProject(new Project("Today", '../assets/calendar-today-outline.svg'));
 setActiveTab(document.querySelector("#go-to-today"));
