@@ -6,7 +6,7 @@ class Project {
     }
 
     addTask(task) {
-        this.tasks.append(task);
+        this.tasks.push(task);
     }
 }
 

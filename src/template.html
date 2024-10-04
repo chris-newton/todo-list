@@ -29,14 +29,14 @@
                         This Month
                     </button></li>
                 <li>
-                    <button id="go-to-all">
-                        <img src="../assets/calendar-blank-multiple.svg">
-                        All
-                    </button></li>
-                <li>
                     <button id="go-to-completed">
                         <img src="../assets/calendar-check-outline.svg">
                         Completed
+                    </button></li>
+                <li>
+                    <button id="go-to-all">
+                        <img src="../assets/calendar-blank-multiple.svg">
+                        All
                     </button></li>
             </ul>
             
@@ -52,19 +52,41 @@
 
         </div>
 
-        <div class="modal-bg">
+        <div id="project-modal-bg">
             <dialog id="add-project-modal">
                 <form id="add-project-form">
                     <div id="project-modal-row1">
                         <label for="project-name">Create Project</label>
-                        <button type="button" id="close-project-modal"><img src="../assets/close.svg"></button>
+                        <button type="button" class="close-modal" id="close-project-modal"><img src="../assets/close.svg"></button>
                     </div>
                     <div id="project-modal-row2">
-                        <input id="project-name-input" type="text" name="project-name" placeholder="Enter a name for your project"> 
+                        <input id="project-name-input" type="text" name="project-name" 
+                        placeholder="Enter a name for your project" maxlength="25" required> 
                         <input id="project-form-submit" type="submit"></form>
                     </div>
                 </form>
             </dialog>
         </div>
+
+        <div id="task-modal-bg">
+            <dialog id="add-task-modal">
+                <form id="add-task-form">
+                    <div id="task-modal-row1">
+                        <label>Add Task</label>
+                        <button type="button" class="close-modal" id="close-task-modal"><img src="../assets/close.svg"></button>
+                    </div>
+                    <label for="title">Title: </label>
+                    <input type="text" name="title">
+                    <label for="description">Description: </label>
+                    <input type="text" name="description">
+                    <label for="dueDate">Due Date: </label>
+                    <input type="text" name="description">
+                    <label for="priority">Priority: </label>
+                    <input type="text" name="priority">
+
+                    <input type="submit">
+                </form>
+            </dialog>
+        </div>    
     </body>
 </html>

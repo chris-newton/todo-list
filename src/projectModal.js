@@ -1,14 +1,18 @@
-function loadModal() {
+import { addTab } from './util.js';
+import Project from './project.js';
+
+function loadModal(projects) {
     const addProjectModal = document.querySelector("#add-project-modal");
     const closeButton = document.querySelector("#close-project-modal");
-    const modalBg = document.querySelector(".modal-bg");
-
+    const bg = document.querySelector("#project-modal-bg");
+    const content = document.querySelector("#content");
     const addProjectButton = document.querySelector("#add-project");
+    
     addProjectButton.addEventListener("click", () => {
         addProjectModal.showModal();
     });
 
-    modalBg.addEventListener('click', (e) => {
+    bg.addEventListener('click', (e) => {
         if (e.target.id === 'add-project-modal') {
             addProjectModal.close();
         }
@@ -18,22 +22,20 @@ function loadModal() {
         addProjectModal.close();
     });
 
+    // submitting the form triggers creation of a new custom project
+    // and a new content pane to be rendered
     const addProjectForm = document.querySelector("#add-project-form");
     addProjectForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        
         // get book form data
         const formData = new FormData(e.target);
         const formProps = Object.fromEntries(formData);
         const name = formProps["project-name"];
-        const project = document.createElement("div");
-        const title = document.createElement("h1");
-        
-        title.textContent = name; 
-        project.appendChild(title);
+       
+        const project = new Project(name, "../assets/calendar-today-outline.svg");
+        projects.addProject(project); // add to projects array
+        addTab(project); // add button to sidebar
 
-        const customProjectsList = document.querySelector("#custom-projects");
-        customProjectsList.appendChild(project);
         addProjectModal.close();
     });
 }

@@ -12,13 +12,13 @@ function loadHeader(project) {
 
 function loadBody(project) {
     const projectContent = document.createElement("div");
-    project.id = "project-content";
-    
+    projectContent.id = "project-content";
+     
     const addItemButton = document.createElement("button");
     addItemButton.id = "add-item-button";
     addItemButton.style.backgroundImage = "/assets/plus.svg";
     addItemButton.textContent = "Add a task";
-    
+   
     const taskGrid = document.createElement("div");
     taskGrid.id = "project-grid";
     const dummyTask1 = document.createElement("div");
@@ -43,7 +43,7 @@ function load(project) {
     const contentContainer = document.createElement("div");
     contentContainer.id = "content-container";
     contentContainer.append(header, body);
-    
+
     return contentContainer;
 }
 
