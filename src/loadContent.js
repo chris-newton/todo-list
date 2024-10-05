@@ -1,3 +1,5 @@
+import { createTaskRow } from "./taskRow";
+
 function loadHeader(project) {
     const projectHeader = document.createElement("div");
     projectHeader.id = "project-header";
@@ -22,17 +24,15 @@ function loadBody(project) {
     addItemButton.addEventListener("click", () => {
         const addTaskModal = document.querySelector("#add-task-modal");
         addTaskModal.showModal();
-    });
-
+    }); 
+    
     const taskGrid = document.createElement("div");
-    taskGrid.id = "project-grid";
+    taskGrid.id = "task-grid";
    
     project.tasks.forEach((task) => {
-        const taskCard = document.createElement("div");
-        const name = document.createElement("h3");
-        name.textContent = task.title + " " + task.description;
-        taskCard.appendChild(name);
-        taskGrid.appendChild(taskCard);
+        const row = createTaskRow(task);
+
+        taskGrid.appendChild(row);
     });
 
     projectContent.append(addItemButton, taskGrid);

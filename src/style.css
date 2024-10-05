@@ -164,10 +164,11 @@ li.active-tab {
     gap: 8px;
 }
 
-#project-grid {
-    background-color: var(--sidebar-bg);
+#task-grid {
     width: max(500px, 60vw);
-    height: max(200px, 50vh);
+    height: auto;
+    display: grid;
+    gap: 5px;
 }
 
 #add-project-modal,
@@ -305,3 +306,11 @@ li.active-tab {
     filter:brightness(90%);
 }
 
+.task-row {
+    background-color: var(--sidebar-bg);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    height: max(200px,fit-content);
+    padding: 10px;
+}
