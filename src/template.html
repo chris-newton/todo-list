@@ -57,7 +57,9 @@
                 <form id="add-project-form">
                     <div id="project-modal-row1">
                         <label for="project-name">Create Project</label>
-                        <button type="button" class="close-modal" id="close-project-modal"><img src="../assets/close.svg"></button>
+                        <button type="button" class="close-modal" id="close-project-modal">
+                            <img src="../assets/close.svg">
+                        </button>
                     </div>
                     <div id="project-modal-row2">
                         <input id="project-name-input" type="text" name="project-name" 
@@ -70,21 +72,29 @@
 
         <div id="task-modal-bg">
             <dialog id="add-task-modal">
+                <button type="button" class="close-modal" id="close-task-modal"><img src="../assets/close.svg"></button>
                 <form id="add-task-form">
-                    <div id="task-modal-row1">
-                        <label>Add Task</label>
-                        <button type="button" class="close-modal" id="close-task-modal"><img src="../assets/close.svg"></button>
-                    </div>
+                    <label>Add Task</label>
+                        <div id="task-modal-row1">
+                            <label for="project">Part of</label>
+                            <select id="projects-list" name="project-name" required>
+                                <option value="" disabled selected>Select a Project</option>
+                                <option value="Today">Today</option>
+                                <option value="Week">Week</option>
+                                <option value="Month">Month</option>
+                                <option value="Completed">Completed</option>
+                                <option value="All">All</option>
+                            </select>
+                        </div>
                     <label for="title">Title: </label>
-                    <input type="text" name="title">
+                    <input type="text" name="title" autocomplete="off" required>
                     <label for="description">Description: </label>
-                    <input type="text" name="description">
+                    <input type="text" name="description" autocomplete="off" required>
                     <label for="dueDate">Due Date: </label>
-                    <input type="text" name="description">
+                    <input type="text" name="dueDate" autocomplete="off" required >
                     <label for="priority">Priority: </label>
-                    <input type="text" name="priority">
-
-                    <input type="submit">
+                    <input type="text" name="priority" autocomplete="off" required>
+                    <input id="task-form-submit" type="submit">
                 </form>
             </dialog>
         </div>    

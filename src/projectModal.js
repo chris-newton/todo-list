@@ -5,7 +5,6 @@ function loadModal(projects) {
     const addProjectModal = document.querySelector("#add-project-modal");
     const closeButton = document.querySelector("#close-project-modal");
     const bg = document.querySelector("#project-modal-bg");
-    const content = document.querySelector("#content");
     const addProjectButton = document.querySelector("#add-project");
     
     addProjectButton.addEventListener("click", () => {
@@ -33,7 +32,7 @@ function loadModal(projects) {
         const name = formProps["project-name"];
        
         const project = new Project(name, "../assets/calendar-today-outline.svg");
-        projects.addProject(project); // add to projects array
+        projects.addCustomProject(project); // add to projects array
         addTab(project); // add button to sidebar
 
         addProjectModal.close();

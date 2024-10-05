@@ -18,15 +18,23 @@ function loadBody(project) {
     addItemButton.id = "add-item-button";
     addItemButton.style.backgroundImage = "/assets/plus.svg";
     addItemButton.textContent = "Add a task";
-   
+
+    addItemButton.addEventListener("click", () => {
+        const addTaskModal = document.querySelector("#add-task-modal");
+        addTaskModal.showModal();
+    });
+
     const taskGrid = document.createElement("div");
     taskGrid.id = "project-grid";
-    const dummyTask1 = document.createElement("div");
-    dummyTask1.textContent = "dummy task 1        description          due date";
-    const dummyTask2 = document.createElement("div");
-    dummyTask2.textContent = "dummy task 2        description          due date";
-    taskGrid.append(dummyTask1, dummyTask2);
-    
+   
+    project.tasks.forEach((task) => {
+        const taskCard = document.createElement("div");
+        const name = document.createElement("h3");
+        name.textContent = task.title + " " + task.description;
+        taskCard.appendChild(name);
+        taskGrid.appendChild(taskCard);
+    });
+
     projectContent.append(addItemButton, taskGrid);
     
     const projectBody = document.createElement("div");
@@ -47,4 +55,4 @@ function load(project) {
     return contentContainer;
 }
 
-export const loadProject = load;
+export const loadContent = load;

@@ -2,7 +2,7 @@ class Project {
     constructor(projectName, svgPath) {
         this.name = projectName;
         this.iconPath = svgPath;
-        this.tasks = []
+        this.tasks = [];
     }
 
     addTask(task) {

@@ -1,5 +1,7 @@
-import { loadProject } from "./loadProject.js";
+import { loadContent } from "./loadContent.js";
 import { loadTaskModal } from "./taskModal.js";
+
+/* More DOM stuff in this one */
 
 function setTabActive(button) {
     const tabs = document.querySelectorAll("#sidebar > ul> li");
@@ -20,7 +22,7 @@ function appendTab(project) {
     button.addEventListener("click", () => {
         const content = document.querySelector("#content");
         content.replaceChildren();      
-        const contentContainer = loadProject(project);
+        const contentContainer = loadContent(project);
         content.appendChild(contentContainer); 
         setActiveTab(button); // set the sidebar tab to active
         loadTaskModal();

@@ -1,5 +1,8 @@
 import Project from './project.js';
 
+// global variable
+// holds all projects and manages adding/removing projects
+// only user-defined (custom) projects can be added/removed
 class Projects {
     constructor() {
         this.builtinProjects = [
@@ -9,24 +12,27 @@ class Projects {
             new Project("Completed", '../assets/calendar-check-outline.svg'),
             new Project("All", '../assets/calendar-blank-multiple.svg')
         ]
-        this.customProjects = []
+        this.customProjects = [];
     }
 
-    getBuiltinProject(idx) {
-        if (idx < 0 || idx >= this.builtinProjects.length) {
-            throw "index for builtinProjects out of range";
+    getBuiltinProject(projectName) {
+        const proj = this.builtinProjects.find((p) => p.name === projectName);
+        if (!proj) {
+            throw "Projects.getBuiltinProject(): project not found";
         }
-        return this.builtinProjects[idx];
+        return proj;
     }
 
-    getCustomProject(idx) {
-        if (idx < 0 || idx >= this.customProjects.length) {
-            throw "index for customProjects out of range";
+    getCustomProject(projectName) {
+        console.log(projectName)
+        const proj = this.customProjects.find((p) => p.name === projectName);
+        if (!proj) {
+            throw "Projects.getCustomProject(): project not found";
         }
-        return this.customProjects[idx];
+        return proj;
     }
 
-    addProject(project) {
+    addCustomProject(project) {
         this.customProjects.push(project);
     }
 
@@ -35,4 +41,4 @@ class Projects {
     }
 }
 
-export default Projects;
+export let projects = new Projects();
