@@ -1,3 +1,10 @@
+import { projects } from './projects.js';
+import { loadContent } from './loadContent.js';
+
+import deleteSVG from "../assets/delete.svg";
+import pencilSVG from "../assets/pencil.svg";
+import uncheckedSVG from "../assets/checkbox-blank-outline.svg";
+
 function createRow(task) {
     const taskRow = document.createElement("div");
     taskRow.classList.add("task-row");
@@ -6,8 +13,12 @@ function createRow(task) {
     checkBox.type = "checkbox";
     checkBox.classList.add("task-row-checkbox");
     const checkBoxIcon = document.createElement("img");
-    checkBoxIcon.src = "../assets/checkbox-blank-outline.svg";
+    checkBoxIcon.src = uncheckedSVG; 
     checkBox.appendChild(checkBoxIcon);
+    checkBox.addEventListener("click", () => {
+        checkBox.classList.toggle("checked");
+        taskRow.classList.toggle("completed");
+    });
     
     const details = document.createElement("div");
     details.classList.add("task-row-details");
@@ -19,28 +30,46 @@ function createRow(task) {
     
     const meta = document.createElement("div");
     meta.classList.add("task-row-meta");
-    const dueDate = document.createElement("span");
-    dueDate.textContent = task.dueDate;
     const priority = document.createElement("span");
+    priority.classList.add("priority");
     priority.textContent = task.priority;
+    const dueDate = document.createElement("span");
+    dueDate.classList.add("due-date");
+    dueDate.textContent = task.dueDate;
     const project = document.createElement("span");
-    project.textContent = task.project;
-
+    project.classList.add("project");
+    project.textContent = task.projectName;
     const removeButton = document.createElement("button");
-    const removeSvg = document.createElement("img");
-    removeSvg.src = "../assets/delete.svg"; 
-    removeButton.appendChild(removeSvg);
-    removeButton.addEventListener("click", () => {}); // TODO: rmeove button functionality
-    
+    const removeIcon = document.createElement("img");
+    removeIcon.src = deleteSVG; 
+    removeButton.appendChild(removeIcon);
+    removeButton.addEventListener("click", () => {
+        let thisProject = projects.getProject(task.projectName);
+        thisProject.removeTask(task);
+        
+        const content = document.querySelector("#content");
+        const contentContainer = loadContent(thisProject);
+        content.replaceChildren();
+        content.appendChild(contentContainer); 
+    });
+
     const editButton = document.createElement("button");
-    const editSvg = document.createElement("img");
-    editSvg.src = "../assets/pencil.svg"; 
-    editButton.appendChild(editSvg);
-    editButton.addEventListener("click", () => {}); // TODO: rmeove button functionality
-    
+    const editIcon = document.createElement("img");
+    editIcon.src = pencilSVG; 
+    editButton.appendChild(editIcon);
+    editButton.addEventListener("click", () => {
+    }); 
+
+    const buttons = document.createElement("div");
+    buttons.classList.add("edit-task-buttons");
+    buttons.append(editButton, removeButton);
     meta.append(priority, dueDate, project);
 
-    taskRow.append(checkBox, details, meta);
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("task-content-container");
+    contentContainer.append(details, meta);
+
+    taskRow.append(checkBox, contentContainer, buttons);
     return taskRow;
 }
 

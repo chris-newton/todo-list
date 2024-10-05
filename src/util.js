@@ -1,6 +1,8 @@
 import { loadContent } from "./loadContent.js";
 import { loadTaskModal } from "./taskModal.js";
 
+import todaySVG from "../assets/calendar-today-outline.svg";
+
 /* More DOM stuff in this one */
 
 function setTabActive(button) {
@@ -13,12 +15,12 @@ function setTabActive(button) {
 
 // adds new tab for a custom project
 function appendTab(project) {
-    const image = document.createElement("img");
-    image.src = "../assets/calendar-today-outline.svg";
+    const tabIcon = document.createElement("img");
+    tabIcon.src = todaySVG; 
 
     const button = document.createElement("button");
-    button.appendChild(image);
-    button.textContent += project.name;
+    button.textContent = " " + project.name;
+    button.prepend(tabIcon);
     button.addEventListener("click", () => {
         const content = document.querySelector("#content");
         content.replaceChildren();      

@@ -90,10 +90,16 @@
                     <input type="text" name="title" autocomplete="off" required>
                     <label for="description">Description: </label>
                     <input type="text" name="description" autocomplete="off" required>
-                    <label for="dueDate">Due Date: </label>
-                    <input type="text" name="dueDate" autocomplete="off" required >
-                    <label for="priority">Priority: </label>
-                    <input type="text" name="priority" autocomplete="off" required>
+                    <label for="dueDate">Due Date:
+                        <input type="date" name="dueDate" autocomplete="off" required >
+                    </label>
+                    <label for="priority">Priority:
+                        <select id="priority-list" name="priority" required>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </label>
                     <input id="task-form-submit" type="submit">
                 </form>
             </dialog>

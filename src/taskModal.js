@@ -19,20 +19,13 @@ function loadModal() {
 
     const taskForm = document.querySelector("#add-task-form");
     taskForm.addEventListener("submit", (e) => {
+        console.log("here")
         e.preventDefault();
         const formData = new FormData(e.target);
         const formProps = Object.fromEntries(formData);
         const task = new Task(...Object.values(formProps));
 
-        let thisProject;
-        const builtinNames = ["Today", "Week", "Month", "Completed", "All"];
-        
-        if (builtinNames.includes(task.projectName)) {
-            thisProject = projects.getBuiltinProject(task.projectName);
-        } else {
-            thisProject = projects.getCustomProject(task.projectName);
-        }
-
+        let thisProject = projects.getProject(task.projectName);
         thisProject.addTask(task);
 
         const content = document.querySelector("#content");

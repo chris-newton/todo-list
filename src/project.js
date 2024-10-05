@@ -7,6 +7,13 @@ class Project {
 
     addTask(task) {
         this.tasks.push(task);
+
+        console.log("once");
+    }
+
+    removeTask(task) {
+        const idx = this.tasks.indexOf(task);
+        this.tasks.splice(idx, 1);
     }
 }
 

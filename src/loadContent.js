@@ -4,11 +4,11 @@ function loadHeader(project) {
     const projectHeader = document.createElement("div");
     projectHeader.id = "project-header";
     const nameIcon = document.createElement("img");
+    nameIcon.classList.add("header-icon"); 
     nameIcon.src = project.iconPath;
     const name = document.createElement("h2");
     name.textContent = project.name;
     projectHeader.append(nameIcon, name);
-
     return projectHeader;
 }
 
@@ -31,7 +31,6 @@ function loadBody(project) {
    
     project.tasks.forEach((task) => {
         const row = createTaskRow(task);
-
         taskGrid.appendChild(row);
     });
 

@@ -1,6 +1,8 @@
 import { addTab } from './util.js';
 import Project from './project.js';
 
+import todaySVG from '../assets/calendar-today-outline.svg';
+
 function loadModal(projects) {
     const addProjectModal = document.querySelector("#add-project-modal");
     const closeButton = document.querySelector("#close-project-modal");
@@ -31,10 +33,15 @@ function loadModal(projects) {
         const formProps = Object.fromEntries(formData);
         const name = formProps["project-name"];
        
-        const project = new Project(name, "../assets/calendar-today-outline.svg");
+        const project = new Project(name, todaySVG);
         projects.addCustomProject(project); // add to projects array
         addTab(project); // add button to sidebar
-
+        // add new project choice to task modal 
+        const projectOption = document.createElement("option");
+        projectOption.value = project.name;
+        projectOption.textContent = project.name;
+        const projectsList = document.querySelector("#projects-list");
+        projectsList.appendChild(projectOption); 
         addProjectModal.close();
     });
 }
