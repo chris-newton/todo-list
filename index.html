@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TODOLO</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script defer src="main.js"></script></head>
+    
+    <body>
+        <div id="sidebar">
+            <h1><button id="go-to-home">TODOLO</button></h1>
+            <ul>
+                <li>
+                    <button id="go-to-today">
+                        <img src="3faae0cf01e4ecd160ef.svg">
+                        Today
+                    </button></li>
+                <li>
+                    <button id="go-to-week">
+                        <img src="c694ee9e01a22d978d4d.svg">
+                        This week
+                    </button></li>
+                <li>
+                    <button id="go-to-month">
+                        <img src="18f552623324e58156e6.svg">
+                        This Month
+                    </button></li>
+                <li>
+                    <button id="go-to-completed">
+                        <img src="27f86a220d34b576b3f3.svg">
+                        Completed
+                    </button></li>
+                <li>
+                    <button id="go-to-all">
+                        <img src="a50d0bca03863a0da5d9.svg">
+                        All
+                    </button></li>
+            </ul>
+            
+            <ul id="custom-projects">
+                <lh id="add-project-flex">My Projects 
+                    <button id="add-project">
+                        <img id="add-project-plus" src="3cffe9a515498593b872.svg">
+                    </button></lh>
+            </ul>
+        </div>
+
+        <div id="content">
+
+        </div>
+
+        <div id="project-modal-bg">
+            <dialog id="add-project-modal">
+                <form id="add-project-form">
+                    <div id="project-modal-row1">
+                        <label for="project-name">Create Project</label>
+                        <button type="button" class="close-modal" id="close-project-modal">
+                            <img src="97d4c0a10ac97607dc65.svg">
+                        </button>
+                    </div>
+                    <div id="project-modal-row2">
+                        <input id="project-name-input" type="text" name="project-name" 
+                        placeholder="Enter a name for your project" maxlength="25" required> 
+                        <input id="project-form-submit" type="submit"></form>
+                    </div>
+                </form>
+            </dialog>
+        </div>
+
+        <div id="task-modal-bg">
+            <dialog id="add-task-modal">
+                <button type="button" class="close-modal" id="close-task-modal"><img src="97d4c0a10ac97607dc65.svg"></button>
+                <form id="add-task-form">
+                    <label>Add Task</label>
+                        <div id="task-modal-row1">
+                            <label for="project">Part of</label>
+                            <select id="projects-list" name="project-name" required>
+                                <option value="" disabled selected>Select a Project</option>
+                                <option value="Today">Today</option>
+                                <option value="Week">Week</option>
+                                <option value="Month">Month</option>
+                                <option value="Completed">Completed</option>
+                                <option value="All">All</option>
+                            </select>
+                        </div>
+                    <label for="title">Title: </label>
+                    <input type="text" name="title" autocomplete="off" required>
+                    <label for="description">Description: </label>
+                    <input type="text" name="description" autocomplete="off" required>
+                    <label for="dueDate">Due Date:
+                        <input type="date" name="dueDate" autocomplete="off" required >
+                    </label>
+                    <label for="priority">Priority:
+                        <select id="priority-list" name="priority" required>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </label>
+                    <input id="task-form-submit" type="submit">
+                </form>
+            </dialog>
+        </div>    
+    </body>
+</html>
